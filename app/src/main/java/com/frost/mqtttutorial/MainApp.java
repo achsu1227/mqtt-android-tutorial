@@ -22,6 +22,7 @@ public class MainApp extends Application {
 
     private MqttHelper mqttHelper;
     private Stack<Activity> activityStack = new Stack<>();
+    private boolean isSubscrib = true;
 
     @Override
     public void onCreate() {
@@ -37,12 +38,15 @@ public class MainApp extends Application {
             @Override
             public void connectComplete(boolean b, String s) {
                 Log.w("Debug","Connected");
+                //if (!isSubscrib) {
+                //    isSubscrib = true;
                 mqttHelper.subscribeToTopic();
+                //}
             }
 
             @Override
             public void connectionLost(Throwable throwable) {
-
+                //isSubscrib = false;
             }
 
             @Override

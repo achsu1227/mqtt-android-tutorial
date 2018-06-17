@@ -13,6 +13,8 @@ import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
+import utils.DeviceUtil;
+
 /**
  * Created by wildan on 3/19/2017.
  */
@@ -24,14 +26,15 @@ public class MqttHelper {
     // final String clientId = "ExampleAndroidClient";
 
     final String serverUri = "tcp://192.168.1.107:1883";
-    final String clientId = "AC_ExampleAndroidClient";
+    private String clientId = "AC_ExampleAndroidClient";
     // final String subscriptionTopic = "sensor/+";
-    final String subscriptionTopic = "sensor/+";
+    final String subscriptionTopic = "sensor/";
 
     final String username = "xxxxxxx";
     final String password = "yyyyyyy";
 
     public MqttHelper(Context context){
+        clientId = DeviceUtil.id(context);
         mqttAndroidClient = new MqttAndroidClient(context, serverUri, clientId);
         mqttAndroidClient.setCallback(new MqttCallbackExtended() {
             @Override
