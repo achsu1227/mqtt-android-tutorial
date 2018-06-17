@@ -20,9 +20,12 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 public class MqttHelper {
     public MqttAndroidClient mqttAndroidClient;
 
-    final String serverUri = "tcp://broker.hivemq.com:1883";
+    // final String serverUri = "tcp://broker.hivemq.com:1883";
+    // final String clientId = "ExampleAndroidClient";
 
-    final String clientId = "ExampleAndroidClient";
+    final String serverUri = "tcp://192.168.1.107:1883";
+    final String clientId = "AC_ExampleAndroidClient";
+    // final String subscriptionTopic = "sensor/+";
     final String subscriptionTopic = "sensor/+";
 
     final String username = "xxxxxxx";

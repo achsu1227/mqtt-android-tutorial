@@ -1,7 +1,7 @@
 package com.frost.mqtttutorial;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -13,8 +13,9 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 
 import helpers.ChartHelper;
 import helpers.MqttHelper;
+import listener.MqttMessageListener;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MqttMessageListener {
 
     MqttHelper mqttHelper;
     ChartHelper mChart;
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         chart = (LineChart) findViewById(R.id.chart);
         mChart = new ChartHelper(chart);
 
-        startMqtt();
+        // startMqtt();
     }
 
     private void startMqtt(){
@@ -60,5 +61,11 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onMessageReceive(String msg) {
+        dataReceived.setText(msg);
+        mChart.addEntry(Float.valueOf(msg));
     }
 }

@@ -1,0 +1,28 @@
+二. Mosquitto 安装
+   安装命令：控制台直接输入 brew install mosquitto
+
+三. mosquitto服务启动命令
+To have launchd start mosquitto now and restart at login:
+
+  brew services start mosquitto
+
+Or, if you don't want/need a background service you can just run:
+
+  mosquitto -c /usr/local/etc/mosquitto/mosquitto.conf
+
+./mosquitto -c ../etc/mosquitto/mosquitto.conf
+
+ c. mosquitto_pub
+ mosquitto_pub -t "topictest" -m "hello"  
+
+停止服务  brew services stop mosquitto
+启动服务  brew services start mosquitto
+
+安裝路徑為
+/usr/local/Cellar/mosquitto/1.4.14_2/etc/mosquitto
+
+Mosquitto MQTT Broker 預設通訊埠為 1883，並限制最大連線數為 1024 個客戶端連線，此限制可以透過 Mosquitto 根目錄下的.conf 檔案以 TXT
+文本格式開啟，即可找到#port 1883，可以將 1883 修改為 0~65535 間的數
+
+雲端伺服器與 MQTT Broker 建置2字作為新的連接埠，修改#max_connections 1024，將 1024 修改為-1 即可取消 1024 個
+連線數的限制，即可使用新的組態。
