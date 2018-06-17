@@ -37,6 +37,7 @@ public class MainApp extends Application {
             @Override
             public void connectComplete(boolean b, String s) {
                 Log.w("Debug","Connected");
+                mqttHelper.subscribeToTopic();
             }
 
             @Override

@@ -61,7 +61,7 @@ public class MqttHelper {
         mqttAndroidClient.setCallback(callback);
     }
 
-    private void connect(){
+    public void connect(){
         MqttConnectOptions mqttConnectOptions = new MqttConnectOptions();
         mqttConnectOptions.setAutomaticReconnect(true);
         mqttConnectOptions.setCleanSession(false);
@@ -96,7 +96,7 @@ public class MqttHelper {
     }
 
 
-    private void subscribeToTopic() {
+    public void subscribeToTopic() {
         try {
             mqttAndroidClient.subscribe(subscriptionTopic, 0, null, new IMqttActionListener() {
                 @Override
